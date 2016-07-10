@@ -18,7 +18,10 @@ if ($OnlineList) {
 			foreach ($OnlineListPerFlag as $value) {
 				$totalPlayers += $value['pais'];
 				echo "<tr>";
-				echo "	<td> <img src='\flags\\'" . $value['flag'].".png> </td>";
+				if ($config['country_flags'] === true  && strlen(trim($value['flag'])) > 0)
+					echo "	<td> <img src='\flags\\'" . $value['flag'].".png> </td>";
+				else 
+					echo "<td> </td>";
 				if ($value['pais'] > 1)
 					echo "  <td>".$value['pais']." players </td>";
 				else 
@@ -54,8 +57,10 @@ if ($OnlineList) {
 				$resets = preg_replace("/[^0-9]/","",$value['description']);
 				
 				echo '<tr class="special" onclick="javascript:window.location.href=\'' . $url . '\'">';
-				if ($config['country_flags'])
-					echo '<td><img src="\flags\\' . $account_data['flag'] . '.png"></td>';			
+				if ($config['country_flags'] === true  && strlen(trim($account_data['flag'])) > 0)
+					echo '<td><img src="\flags\\' . $account_data['flag'] . '.png"></td>';
+				else 
+					echo '<td> </td>';
 				echo '<td><a href="characterprofile.php?name='. $value['name'] .'">'. $value['name'] .'</a></td>';
 				if (!empty($value['gname'])) echo '<td><a href="guilds.php?name='. $value['gname'] .'">'. $value['gname'] .'</a></td>'; else echo '<td></td>'; 
 				echo '<td>'.$resets.'</td>';
