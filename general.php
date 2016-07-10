@@ -266,7 +266,13 @@ function format_character_name($name) {
 // Returns a list of players online
 function online_list() {
 	if (config('TFSVersion') == 'TFS_10') return mysql_select_multi("SELECT `o`.`player_id` AS `id`, `p`.`name` as `name`, `p`.`level` as `level`, `p`.`vocation` as `vocation`, `g`.`name` as `gname` FROM `players_online` as `o` INNER JOIN `players` as `p` ON `o`.`player_id` = `p`.`id` LEFT JOIN `guild_membership` gm ON `o`.`player_id` = `gm`.`player_id` LEFT JOIN `guilds` g ON `gm`.`guild_id` = `g`.`id`");
-	else return mysql_select_multi("SELECT p.name as name, p.level as level, p.vocation as vocation, g.name as gname, p.account_id, p.description FROM players p LEFT JOIN guild_ranks gr ON gr.id = p.rank_id LEFT JOIN guilds g ON gr.guild_id = g.id WHERE p.online = '1' ORDER BY p.name DESC;");
+	else return mysql_select_multi("SELECT p.name as name, p.level as level, p.vocation as vocation, g.name as gname, p.account_id, Cast((Case length(p.description) when 0 then 0 else substring(p.description, 9, char_length(p.description)-9) end) as UNSIGNED) as description FROM players p LEFT JOIN guild_ranks gr ON gr.id = p.rank_id LEFT JOIN guilds g ON gr.guild_id = g.id WHERE p.online = '1' ORDER BY 6 DESC;");
+}
+
+// Returns a list of players online
+function online_list_per_flag() {
+	if (config('TFSVersion') == 'TFS_10') return mysql_select_multi("Select za.flag, count(1) as pais from players p join znote_accounts za on za.account_id = p.account_id where p.online = 1 group by za.flag order by 1 desc;");
+	else return mysql_select_multi("Select za.flag, count(1) as pais from players p join znote_accounts za on za.account_id = p.account_id where p.online = 1 group by za.flag order by 1 desc;");
 }
 
 // Gets you the actual IP address even from users behind ISP proxies and so on.
