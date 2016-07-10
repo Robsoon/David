@@ -7,6 +7,6 @@ Até agora:
 
 
 Falta:
-- Quando for null precisa trazer 0. Tanto na página dos personagens quanto na de resets.
-- Ordenar os usuários online por Resets.
-- Criar um total de jogadores online por flags.
+- Quando for null precisa trazer 0. Tanto na página dos characters quanto na de who is online resets. -- Alterado
+- Ordenar os usuários online por Resets.                                                              -- Alterado 
+- Criar um total de jogadores online por flags.                                                       -- Alterado
