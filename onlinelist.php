@@ -14,12 +14,23 @@ if ($OnlineList) {
 			<th>Online:</th>
 		</tr>
 		<?php
+			$totalPlayers = 0;
 			foreach ($OnlineListPerFlag as $value) {
+				$totalPlayers += $value['pais'];
 				echo "<tr>";
 				echo "	<td> <img src='\flags\\'" . $value['flag'].".png> </td>";
-				echo "  <td>".$value['pais']."</td>";
+				if ($value['pais'] > 1)
+					echo "  <td>".$value['pais']." players </td>";
+				else 
+					echo "  <td>".$value['pais']." player </td>";
 				echo "</tr>";
 			}
+			// totalPlayers
+			echo "<tr>";
+			echo "	<td><b>Total:</b></td>";
+			echo "	<td>".$totalPlayers." </td>";
+			echo "</tr>";
+		
 		?>
 	</table>
 	
