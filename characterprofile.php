@@ -509,8 +509,8 @@ if ($playerData['mana']['percent'] > 100) $playerData['mana']['percent'] = 100;
 				<li>
 					<font class="profile_font" name="profile_font_level">Resets: 
 						<?php						
-							echo isset($profile_data['description']) ? preg_replace("/[^0-9]/","",$profile_data['description']) 
-																	 : "0"; 
+							echo strlen($profile_data['description']) > 0 ? preg_replace("/[^0-9]/","",$profile_data['description']) 
+																		  : "0"; 
 						?>
 					</font>
 				</li>
