@@ -105,7 +105,7 @@ if ($scores) {
 				?>
 				<tr>
 					<td><?php echo $i+1; ?></td>
-					<td><?php echo $flag; ?> </td>
+					<td style="text-align: center;"><?php echo $flag; ?> </td>
 					<td><a href="characterprofile.php?name=<?php echo $scores[$type][$i]['name']; ?>"><?php echo $scores[$type][$i]['name']; ?></a></td>
 					<td><?php echo vocation_id_to_name($scores[$type][$i]['vocation']); ?></td>
 					<td><?php echo $scores[$type][$i]['value']; ?></td>
