@@ -271,8 +271,8 @@ function online_list() {
 
 // Returns a list of players online
 function online_list_per_flag() {
-	if (config('TFSVersion') == 'TFS_10') return mysql_select_multi("Select za.flag, count(1) as pais from players p join znote_accounts za on za.account_id = p.account_id where p.online = 1 group by za.flag order by 1 desc;");
-	else return mysql_select_multi("Select za.flag, count(1) as pais from players p join znote_accounts za on za.account_id = p.account_id where p.online = 1 group by za.flag order by 1 desc;");
+	if (config('TFSVersion') == 'TFS_10') return mysql_select_multi("Select za.flag, count(1) as pais from players p join znote_accounts za on za.account_id = p.account_id where p.online = 1 group by za.flag order by 2 desc;");
+	else return mysql_select_multi("Select za.flag, count(1) as pais from players p join znote_accounts za on za.account_id = p.account_id where p.online = 1 group by za.flag order by 2 desc;");
 }
 
 // Gets you the actual IP address even from users behind ISP proxies and so on.
