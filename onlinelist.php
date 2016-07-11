@@ -70,9 +70,9 @@ if ($OnlineList) {
 					echo "<tr>";
 					echo "	<td><b>Total:</b></td>";
 					if ($totalPlayers > 1)
-						echo "	<td style="text-align: center;">".$totalPlayers." players online </td>";
+						echo "	<td style='text-align: center;'>".$totalPlayers." players online </td>";
 					else 
-						echo "	<td style="text-align: center;">".$totalPlayers." player online </td>";
+						echo "	<td style='text-align: center;'>".$totalPlayers." player online </td>";
 					echo "</tr>";
 				?>
 			</table>
